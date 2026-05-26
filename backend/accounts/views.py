@@ -24,12 +24,16 @@ def signup(request):
         serializer.save()
 
         return Response({
+
             "message":
             "Account created successfully"
         })
 
     return Response(
-        serializer.errors
+
+        serializer.errors,
+
+        status=400
     )
 
 
@@ -54,7 +58,7 @@ def login(request):
         password=password
     )
 
-    if user:
+    if user is not None:
 
         return Response({
 
@@ -73,7 +77,7 @@ def login(request):
         "error":
         "Invalid credentials"
 
-    }, status=400)
+    }, status=401)
 
 
 

@@ -33,7 +33,14 @@ function Signup() {
         }
       );
 
-      alert(response.data.message);
+      console.log(response.data);
+
+      alert(
+
+        response.data.message ||
+
+        "Signup successful"
+      );
 
       localStorage.setItem(
         "token",
@@ -56,7 +63,20 @@ function Signup() {
 
       console.log(error);
 
-      alert("Signup failed");
+      console.log(error.response);
+
+      alert(
+
+        error.response?.data?.error ||
+
+        error.response?.data?.message ||
+
+        JSON.stringify(
+          error.response?.data
+        ) ||
+
+        "Signup failed"
+      );
     }
   };
 
