@@ -24,7 +24,7 @@ function Signup() {
 
       const response = await axios.post(
 
-        "http://127.0.0.1:8000/api/auth/signup/",
+        "https://breathe-esg-t84p.onrender.com/api/auth/signup/",
 
         {
           username,
@@ -38,6 +38,16 @@ function Signup() {
       localStorage.setItem(
         "token",
         "esg-user"
+      );
+
+      localStorage.setItem(
+        "username",
+        username
+      );
+
+      localStorage.setItem(
+        "email",
+        email
       );
 
       navigate("/dashboard");
