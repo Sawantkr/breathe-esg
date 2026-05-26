@@ -1,0 +1,4 @@
+MeterID,Location,Consumption_kWh,BillingPeriod,Tariff
+MTR001,Kolkata,1200,2026-05,Commercial
+MTR002,Delhi,,2026-05,Industrial
+MTR003,Mumbai,50000,2026-05,Commercial

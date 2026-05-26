@@ -1,0 +1,4 @@
+Plant,FuelType,Quantity,Unit,Date
+PLANT01,Diesel,2000,L,2026-05-24
+PLANT02,Petrol,15000,L,2026-05-23
+PLANT03,CNG,,KG,2026-05-22

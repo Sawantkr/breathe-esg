@@ -1,0 +1,207 @@
+import { Link, useNavigate } from "react-router-dom";
+
+import { useState } from "react";
+
+import axios from "axios";
+
+function Signup() {
+
+  const navigate = useNavigate();
+
+  const [username, setUsername] =
+    useState("");
+
+  const [email, setEmail] =
+    useState("");
+
+  const [password, setPassword] =
+    useState("");
+
+
+  const handleSignup = async () => {
+
+    try {
+
+      const response = await axios.post(
+
+        "http://127.0.0.1:8000/api/auth/signup/",
+
+        {
+          username,
+          email,
+          password
+        }
+      );
+
+      alert(response.data.message);
+
+      localStorage.setItem(
+        "token",
+        "esg-user"
+      );
+
+      navigate("/dashboard");
+
+    } catch (error) {
+
+      console.log(error);
+
+      alert("Signup failed");
+    }
+  };
+
+  return (
+
+    <div className="min-h-screen relative flex items-center justify-center overflow-hidden">
+
+      {/* Background */}
+
+      <img
+        src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2070&auto=format&fit=crop"
+        alt="background"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+
+      {/* Overlay */}
+
+      <div className="absolute inset-0 bg-black/75"></div>
+
+
+      {/* Glow */}
+
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/20 rounded-full blur-3xl"></div>
+
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-emerald-500/20 rounded-full blur-3xl"></div>
+
+
+      {/* Signup Card */}
+
+      <div className="relative z-10 w-[420px] bg-black/60 backdrop-blur-xl border border-white/10 p-10 rounded-3xl shadow-2xl">
+
+        {/* Logo */}
+
+        <h1 className="text-5xl font-black text-center mb-10 tracking-wide">
+
+          <span className="text-cyan-400">
+            ESG
+          </span>
+
+          <span className="text-white">
+            HUB
+          </span>
+
+        </h1>
+
+
+        {/* Title */}
+
+        <h2 className="text-white text-4xl font-bold mb-8">
+
+          Create Account
+
+        </h2>
+
+
+        {/* Inputs */}
+
+        <div className="space-y-5">
+
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) =>
+              setUsername(e.target.value)
+            }
+            className="w-full bg-zinc-800/90 text-white p-4 rounded-xl outline-none border border-zinc-700 focus:border-cyan-400 transition-all duration-300"
+          />
+
+
+          <input
+            type="email"
+            placeholder="Email address"
+            value={email}
+            onChange={(e) =>
+              setEmail(e.target.value)
+            }
+            className="w-full bg-zinc-800/90 text-white p-4 rounded-xl outline-none border border-zinc-700 focus:border-cyan-400 transition-all duration-300"
+          />
+
+
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) =>
+              setPassword(e.target.value)
+            }
+            className="w-full bg-zinc-800/90 text-white p-4 rounded-xl outline-none border border-zinc-700 focus:border-cyan-400 transition-all duration-300"
+          />
+
+
+          {/* Create Account Button */}
+
+          <button
+            onClick={handleSignup}
+            className="w-full bg-cyan-400 hover:bg-cyan-300 text-black py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:scale-105"
+          >
+
+            Create Account
+
+          </button>
+
+
+          {/* Divider */}
+
+          <div className="flex items-center gap-4 py-2">
+
+            <div className="flex-1 h-[1px] bg-zinc-700"></div>
+
+            <p className="text-gray-400 text-sm">
+
+              OR
+
+            </p>
+
+            <div className="flex-1 h-[1px] bg-zinc-700"></div>
+
+          </div>
+
+
+          {/* Google Button */}
+
+          <button
+            className="w-full border border-zinc-700 hover:border-cyan-400 text-white py-4 rounded-xl font-semibold transition-all duration-300 bg-zinc-900/60 hover:bg-zinc-800"
+          >
+
+            Continue with Google
+
+          </button>
+
+        </div>
+
+
+        {/* Login */}
+
+        <p className="text-gray-400 text-center mt-8">
+
+          Already have an account?
+
+          <Link
+            to="/"
+            className="text-white font-semibold ml-2 hover:text-cyan-400"
+          >
+
+            Sign In
+
+          </Link>
+
+        </p>
+
+      </div>
+
+    </div>
+  );
+}
+
+export default Signup;

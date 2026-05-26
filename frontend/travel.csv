@@ -1,0 +1,4 @@
+Employee,From,To,TravelType,Distance
+EMP01,DEL,BOM,Flight,1400
+EMP02,BLR,HYD,Flight,
+EMP03,MUM,DEL,Flight,25000
