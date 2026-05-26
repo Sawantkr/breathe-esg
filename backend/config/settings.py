@@ -106,15 +106,16 @@ DATABASES = {
 
     'default': {
 
+      
         'ENGINE': 'django.db.backends.postgresql',
 
-        'NAME': 'esg_dashboard',
+        'NAME': 'esg_database_fdjn',
 
-        'USER': 'postgres',
+        'USER': 'esg_database_fdjn_user',
 
-        'PASSWORD': '7209',
+        'PASSWORD': 'CflULwCJPuIaMCOL8nDWJwFKbmZH9BRk',
 
-        'HOST': 'localhost',
+        'HOST': 'dpg-d8anv0mk1jcs73851430-a',
 
         'PORT': '5432',
     }
