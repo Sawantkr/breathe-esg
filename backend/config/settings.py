@@ -20,6 +20,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "breathe-esg-t84p.onrender.com",
+     "breathe-esg-1-m3mf.onrender.com",
     "127.0.0.1",
     "localhost"
 ]
@@ -161,6 +162,7 @@ STATIC_URL = 'static/'
 # CORS
 
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
 
 # Default Primary Key
