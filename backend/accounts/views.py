@@ -15,19 +15,33 @@ from .serializers import SignupSerializer
 @api_view(['POST'])
 def signup(request):
 
+    print("SIGNUP API HIT")
+
+    print(request.data)
+
     serializer = SignupSerializer(
         data=request.data
     )
 
     if serializer.is_valid():
 
-        serializer.save()
+        user = serializer.save()
+
+        print("USER CREATED:", user.username)
 
         return Response({
 
             "message":
-            "Account created successfully"
+            "Account created successfully",
+
+            "username":
+            user.username,
+
+            "email":
+            user.email
         })
+
+    print(serializer.errors)
 
     return Response(
 
@@ -51,6 +65,8 @@ def login(request):
         "password"
     )
 
+    print("LOGIN ATTEMPT:", username)
+
     user = authenticate(
 
         username=username,
@@ -59,6 +75,8 @@ def login(request):
     )
 
     if user is not None:
+
+        print("LOGIN SUCCESS")
 
         return Response({
 
@@ -71,6 +89,8 @@ def login(request):
             "email":
             user.email
         })
+
+    print("LOGIN FAILED")
 
     return Response({
 
