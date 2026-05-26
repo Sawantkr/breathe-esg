@@ -50,7 +50,7 @@ function Dashboard() {
     try {
 
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/records/"
+        "https://breathe-esg-t84p.onrender.com/api/records/"
       );
 
       setRecords(response.data);
@@ -83,7 +83,7 @@ function Dashboard() {
     try {
 
       await axios.post(
-        "http://127.0.0.1:8000/api/upload/",
+        "https://breathe-esg-t84p.onrender.com/api/upload/",
         formData
       );
 
@@ -115,7 +115,7 @@ function Dashboard() {
     try {
 
       await axios.patch(
-        `http://127.0.0.1:8000/api/update-status/${id}/`,
+        `https://breathe-esg-t84p.onrender.com/api/update-status/${id}/`,
         {
           status
         }
@@ -158,7 +158,7 @@ function Dashboard() {
     try {
 
       await axios.delete(
-        `http://127.0.0.1:8000/api/delete-record/${id}/`
+        `https://breathe-esg-t84p.onrender.com/api/delete-record/${id}/`
       );
 
       const updatedRecords =
