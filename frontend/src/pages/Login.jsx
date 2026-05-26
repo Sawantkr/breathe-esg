@@ -33,7 +33,7 @@ function Login() {
 
       const response = await axios.post(
 
-        "http://127.0.0.1:8000/api/auth/login/",
+        "https://breathe-esg-t84p.onrender.com/api/auth/login/",
 
         {
           username,
@@ -88,7 +88,7 @@ function Login() {
 
         await axios.post(
 
-          "http://127.0.0.1:8000/api/auth/google-login/",
+          "https://breathe-esg-t84p.onrender.com/api/auth/google-login/",
 
           {
             username: user.displayName,
