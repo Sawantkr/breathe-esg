@@ -4,6 +4,8 @@ import { useState } from "react";
 
 import axios from "axios";
 
+import { API_BASE } from "../utils/api";
+
 function Signup() {
 
   const navigate = useNavigate();
@@ -12,6 +14,9 @@ function Signup() {
     useState("");
 
   const [email, setEmail] =
+    useState("");
+
+  const [organizationName, setOrganizationName] =
     useState("");
 
   const [password, setPassword] =
@@ -24,11 +29,12 @@ function Signup() {
 
       const response = await axios.post(
 
-        "https://breathe-esg-t84p.onrender.com/api/auth/signup/",
+        `${API_BASE}/auth/signup/`,
 
         {
           username,
           email,
+          organization_name: organizationName,
           password
         }
       );
@@ -57,6 +63,11 @@ function Signup() {
         email
       );
 
+      localStorage.setItem(
+        "organization",
+        response.data.organization_name || "Default Organization"
+      );
+
       navigate("/dashboard");
 
     } catch (error) {
@@ -72,6 +83,7 @@ function Signup() {
         error.response?.data?.message ||
 
         JSON.stringify(
+
           error.response?.data
         ) ||
 
@@ -159,6 +171,17 @@ function Signup() {
 
 
           <input
+            type="text"
+            placeholder="Organization Name"
+            value={organizationName}
+            onChange={(e) =>
+              setOrganizationName(e.target.value)
+            }
+            className="w-full bg-zinc-800/90 text-white p-4 rounded-xl outline-none border border-zinc-700 focus:border-cyan-400 transition-all duration-300"
+          />
+
+
+          <input
             type="password"
             placeholder="Password"
             value={password}
@@ -167,6 +190,7 @@ function Signup() {
             }
             className="w-full bg-zinc-800/90 text-white p-4 rounded-xl outline-none border border-zinc-700 focus:border-cyan-400 transition-all duration-300"
           />
+
 
 
           {/* Create Account Button */}

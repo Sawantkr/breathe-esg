@@ -102,23 +102,27 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # PostgreSQL Database
 
-DATABASES = {
+import sys
 
-    'default': {
-
-        'ENGINE': 'django.db.backends.postgresql',
-
-        'NAME': 'esg_database_fdjn',
-
-        'USER': 'esg_database_fdjn_user',
-
-        'PASSWORD': 'CflULwCJPuIaMCOL8nDWJwFKbmZH9BRk',
-
-        'HOST': 'dpg-d8anv0mk1jcs73851430-a.oregon-postgres.render.com',
-
-        'PORT': '5432',
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'esg_database_fdjn',
+            'USER': 'esg_database_fdjn_user',
+            'PASSWORD': 'CflULwCJPuIaMCOL8nDWJwFKbmZH9BRk',
+            'HOST': 'dpg-d8anv0mk1jcs73851430-a.oregon-postgres.render.com',
+            'PORT': '5432',
+        }
+    }
+
 
 
 # Password Validation

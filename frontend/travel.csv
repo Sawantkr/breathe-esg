@@ -1,4 +1,6 @@
-Employee,From,To,TravelType,Distance
-EMP01,DEL,BOM,Flight,1400
-EMP02,BLR,HYD,Flight,
-EMP03,MUM,DEL,Flight,25000
+Employee,From,To,TravelType,Distance,CabinClass,Nights,GroundMode,Date
+EMP01,DEL,BOM,Flight,,Business,,Car,2026-05-24
+EMP02,BLR,HYD,Flight,500,Economy,,Car,2026-05-23
+EMP03,,Kolkata Office,Hotel,,,4,,2026-05-22
+EMP04,,,Ground,120,,,,,Car,2026-05-21
+EMP05,DEL,UNKNOWN,Flight,,Economy,,Car,2026-05-20

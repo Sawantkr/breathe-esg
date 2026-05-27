@@ -1,4 +1,5 @@
-MeterID,Location,Consumption_kWh,BillingPeriod,Tariff
-MTR001,Kolkata,1200,2026-05,Commercial
-MTR002,Delhi,,2026-05,Industrial
-MTR003,Mumbai,50000,2026-05,Commercial
+MeterID,Location,Consumption_kWh,Consumption_Unit,BillingStart,BillingEnd,TariffType
+MTR001,Kolkata (India),15000,kWh,2026-04-15,2026-05-15,Commercial
+MTR002,Austin (USA),22,MWh,2026-05-01,2026-05-31,Industrial
+MTR003,Stuttgart (Germany),650000,kWh,2026-05-01,2026-05-31,Industrial
+MTR004,Kolkata (India),-200,kWh,2026-05-01,2026-05-31,Commercial

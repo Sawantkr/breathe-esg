@@ -14,6 +14,8 @@ import {
 } from "../firebase/firebase";
 
 
+import { API_BASE } from "../utils/api";
+
 function Login() {
 
   const navigate = useNavigate();
@@ -33,7 +35,7 @@ function Login() {
 
       const response = await axios.post(
 
-        "https://breathe-esg-t84p.onrender.com/api/auth/login/",
+        `${API_BASE}/auth/login/`,
 
         {
           username,
@@ -54,6 +56,11 @@ function Login() {
       localStorage.setItem(
         "email",
         response.data.email
+      );
+
+      localStorage.setItem(
+        "organization",
+        response.data.organization_name || "Default Organization"
       );
 
       navigate("/dashboard");
@@ -86,13 +93,14 @@ function Login() {
 
         // SAVE USER TO DJANGO + POSTGRESQL
 
-        await axios.post(
+        const googleResponse = await axios.post(
 
-          "https://breathe-esg-t84p.onrender.com/api/auth/google-login/",
+          `${API_BASE}/auth/google-login/`,
 
           {
             username: user.displayName,
-            email: user.email
+            email: user.email,
+            organization_name: "Default Organization"
           }
         );
 
@@ -115,6 +123,11 @@ function Login() {
         );
 
         localStorage.setItem(
+          "organization",
+          googleResponse.data.organization_name || "Default Organization"
+        );
+
+        localStorage.setItem(
           "profilePic",
           user.photoURL
         );
@@ -129,6 +142,7 @@ function Login() {
         alert("Google Login Failed");
       }
     };
+
 
 
   return (
